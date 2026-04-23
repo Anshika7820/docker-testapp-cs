@@ -1,7 +1,16 @@
-﻿FROM node:18
-WORKDIR /app
+﻿FROM node
+
+ENV PORT=5050 \
+	MONGO_URL=mongodb://mongoadmin:secret@mongo:27017/?authSource=admin
+
+WORKDIR /testapp
+
 COPY package*.json ./
 RUN npm install
-COPY . .
-EXPOSE 5050
-CMD ["node", "server.js"]
+
+COPY . /testapp
+
+CMD ["node", "/testapp/server.js"]
+
+# To build the image, run:
+# docker build -t testapp:1.0 .

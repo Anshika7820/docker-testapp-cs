@@ -62,6 +62,7 @@ Step 3: Run Application
 ```bash
 docker run -d -p 5050:5050 --name testapp \
 --link mongo \
+-e MONGO_URL=mongodb://mongoadmin:secret@mongo:27017/?authSource=admin \
 anshi1008/docker-testapp-cs:latest
 ```
 
@@ -84,6 +85,10 @@ This will:
 | Application | http://localhost:5050 |
 | Mongo Express | http://localhost:8081 |
 | MongoDB | Port 27017 |
+
+Note:
+- Submit user data from `http://localhost:5050`.
+- `http://localhost:8081` is Mongo Express (database viewer/admin UI), not the signup form.
 
 ## Learning Outcomes
 - Understanding Docker images and containers
