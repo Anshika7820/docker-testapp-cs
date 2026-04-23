@@ -70,7 +70,7 @@ anshi1008/docker-testapp-cs:latest
 Clone or fork this repository, open it in terminal, and run:
 
 ```bash
-docker compose up -d
+docker compose -f mongodb.yaml up -d
 ```
 
 This will:
