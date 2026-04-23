@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5050;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const MONGO_URL = process.env.MONGO_URL || "mongodb://mongoadmin:secret@localhost:27017";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://mongoadmin:secret@localhost:27017/?authSource=admin";
 const client = new MongoClient(MONGO_URL);
 
 //GET all users
@@ -34,6 +34,7 @@ app.post("/addUser", async (req, res) => {
     console.log(data);
     console.log("data inserted in DB");
     client.close();
+    res.redirect("/");
 });
 
 

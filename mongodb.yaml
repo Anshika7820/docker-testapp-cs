@@ -21,6 +21,7 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo
 
   testapp:
+    build: .
     image: anshi1008/docker-testapp-cs:latest
     container_name: testapp
     depends_on:
@@ -29,4 +30,4 @@ services:
       - "5050:5050"
     environment:
       PORT: 5050
-      MONGO_URL: mongodb://mongoadmin:secret@mongo:27017
+      MONGO_URL: mongodb://mongoadmin:secret@mongo:27017/?authSource=admin
